@@ -1,0 +1,58 @@
+CREATE TABLE tatuadores 
+( 
+ id_tatuadores INT AUTO_INCREMENT PRIMARY KEY,  
+ codsenioridade INT NOT NULL,  
+ tel_tatuadores VARCHAR(20) NULL,   
+ nivel_experiencia INT NULL,  
+ nome_tatuadores VARCHAR(100) NOT NULL,  
+ data_contratacao DATE NOT NULL,  
+ descricao_tatuadores INT NULL,  
+ email_tatuadores VARCHAR(150) NULL UNIQUE,
+ FOREIGN KEY(idtatuadores) REFERENCES tatuadores (idtatuadores)
+); 
+
+CREATE TABLE clientes 
+( 
+ id_clientes INT AUTO_INCREMENT PRIMARY KEY,  
+ nome_clientes VARCHAR(100) NOT NULL,  
+ data_nascimento DATE NULL,  
+ tel_clientes VARCHAR(20) NULL,  
+ cpf INT NOT NULL UNIQUE,  
+ datacadastro DATE NULL,  
+ cidade INT NULL,  
+ uf INT NULL,
+ FOREIGN KEY(idclientes) REFERENCES clientes (idclientes)
+); 
+
+CREATE TABLE tatuagem 
+( 
+ id_tatuagem INT AUTO_INCREMENT PRIMARY KEY,  
+ nome_estilo VARCHAR(150) NOT NULL,  
+ descricao_tatuagem INT NULL,  
+ estilo INT NOT NULL,
+ FOREIGN KEY(id_tatuagem) REFERENCES tatuagem (id_tatuagem)
+); 
+
+CREATE TABLE agendamento 
+( 
+ id_agendamentos INT AUTO_INCREMENT PRIMARY KEY,  
+ idclientes INT NOT NULL,  
+ idtatuadores INT NOT NULL,  
+ data-marcada DATETIME NOT NULL,    
+ status_confirmacao INT NULL,  
+ valor_agendamentos INT NULL
+); 
+
+CREATE TABLE senioridade 
+( 
+ codsenioridade INT AUTO_INCREMENT PRIMARY KEY,  
+ nome VARCHAR(150) NOT NULL, 
+ FOREIGN KEY(idsenioridade) REFERENCES senioridade (idsenioridade)
+); 
+
+CREATE TABLE possui 
+( 
+ id_tatuadores INT PRIMARY KEY,  
+ id_tatuagem INT PRIMARY KEY
+FOREIGN KEY(id_tatuadores) REFERENCES tatuadores (id_tatuadores)  
+); 
