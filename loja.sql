@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Maio-2026 às 17:28
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.2
+-- Tempo de geração: 18-Jun-2026 às 17:17
+-- Versão do servidor: 10.4.27-MariaDB
+-- versão do PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,8 +31,20 @@ USE `loja`;
 
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
-  `categoria` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `categoria` varchar(255) DEFAULT NULL,
+  `descricao` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `categorias`
+--
+
+INSERT INTO `categorias` (`id_categoria`, `categoria`, `descricao`) VALUES
+(1, 'Alimentos', ''),
+(2, 'Limpeza', ''),
+(3, 'Utensílios', ''),
+(4, 'Congelados', ''),
+(5, 'Eletrônicos', '');
 
 -- --------------------------------------------------------
 
@@ -47,8 +59,25 @@ CREATE TABLE `produtos` (
   `quant` int(11) NOT NULL,
   `marca` varchar(255) NOT NULL,
   `observacoes` varchar(255) DEFAULT NULL,
-  `id_categoria` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_categoria` int(11) DEFAULT NULL,
+  `data_validade` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id_produtos`, `nome`, `preco`, `quant`, `marca`, `observacoes`, `id_categoria`, `data_validade`) VALUES
+(1, 'macarrao', '5.00', 30, 'Renata', 'com ovo', 1, '2026-11-13'),
+(2, 'cafe', '26.50', 30, '3_coracoes', 'forte', 1, '2026-09-15'),
+(3, 'arroz', '12.00', 30, 'Prato_fino', '1kg', 1, '2026-10-20'),
+(4, 'detergente', '3.00', 30, 'ipé', 'ta contaminado', 2, '2027-03-13'),
+(5, 'sabão', '2.00', 57, 'sabãobom', '', 2, '2027-02-11'),
+(6, 'colher', '3.00', 80, 'tramontina', '', 3, '0000-00-00'),
+(7, 'garfo', '3.00', 80, 'tramontina', '', 3, '0000-00-00'),
+(8, 'faca', '3.00', 90, 'tramontina', '', 3, '0000-00-00'),
+(9, 'nugget', '10.00', 40, 'sádia', 'é bom', 4, '2026-12-23'),
+(10, 'notebook', '870.00', 20, 'sansung', '', 5, '0000-00-00');
 
 --
 -- Índices para tabelas despejadas
@@ -75,13 +104,13 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produtos` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produtos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
