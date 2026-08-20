@@ -18,5 +18,5 @@
 
 #Banco de dados 20/08: Lavarápido
 
-*https://app.brmodeloweb.com/publicview/6a8718436aeb663e94d2e66a
-*https://app.brmodeloweb.com/publicview/6a87188a6aeb663e94d2e689
+* Lógico: https://app.brmodeloweb.com/publicview/6a8718436aeb663e94d2e66a
+* Conceitual: https://app.brmodeloweb.com/publicview/6a87188a6aeb663e94d2e689
